@@ -1,10 +1,6 @@
 hbec_mock_values = {'SPRR2A_0_mock': 78.000035, 'SFN_1_mock': 147.99993999999998, 'SFN_2_mock': 268.99984, 'SFN_3_mock': 199.0, 'COA3_4_mock': 13.000008000000001, 'VAMP8_5_mock': 23.0, 'VAMP8_6_mock': 21.99999}
 hbec_infected_values = {'SPRR2A_0_infected': 189.000047, 'SFN_1_infected': 189.000047, 'SFN_2_infected': 189.000047, 'SFN_3_infected': 189.000047, 'VAMP8_4_infected': 189.000047, 'VAMP8_5_infected': 189.000047}
 
-# Extract keys from dictionaries
-mock_keys = list(hbec_mock_values.keys())
-infected_keys = list(hbec_infected_values.keys())
-
 # Initialize a dictionary to store percentage differences
 percentage_differences = {}
 
@@ -15,7 +11,10 @@ for i in range(min(len(mock_keys), len(infected_keys))):
 
     # Calculate percentage difference using the correct formula
     percentage_diff = abs((infected_value - mock_value) / ((infected_value + mock_value) / 2)) * 100
-    percentage_differences[mock_keys[i]] = percentage_diff
+
+    # Modify the key to end with "_difference"
+    new_key = mock_keys[i].replace("_mock", "_difference")
+    percentage_differences[new_key] = percentage_diff
 
 # Display the result
 print(percentage_differences)
