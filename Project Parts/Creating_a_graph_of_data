@@ -28,20 +28,6 @@ for i, (mock_val, infected_val, diff) in enumerate(zip(list(hbec_mock_values.val
 
 
 
-
-
-
-# Print keys for debugging
-print("Error keys:", error_keys)
-print("Mock keys:", list(hbec_mock_values.keys()))
-
-# Check for key discrepancies
-for key in error_keys:
-    if key not in hbec_mock_values:
-        print(f"Key '{key}' not found in hbec_mock_values.")
-
-
-
 # Set labels and title
 ax.set_xlabel('Transcripts')
 ax.set_ylabel('Number of modified transcripts')
