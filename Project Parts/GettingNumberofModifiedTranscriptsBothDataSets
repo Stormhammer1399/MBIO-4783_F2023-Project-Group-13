@@ -59,7 +59,7 @@ for index, row in hbec_infected_df.iterrows():
     col_5_value = row['mod_ratio']
 
     # Perform the multiplication
-    result = col_10_value * col_13_value
+    result = col_2_value * col_5_value
 
     # Store the result in the dictionary with a unique key
     key = f"{row['gene']}_{index}_infected"  # Use index to create a unique key
