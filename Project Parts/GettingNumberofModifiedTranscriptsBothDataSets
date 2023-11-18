@@ -1,21 +1,19 @@
 import pandas as pd
 
-# mock genes of interest (not yet dataframe)
-data_mock = {
-    'ensembl_id1': ['ENST00000344843.11', 'ENST00000196061.4', 'ENST00000196061.4', 'ENST00000196061.4', 'ENST00000196061.4'],
-    'ensembl_id2': ['ENSG00000242485.5', 'ENSG00000083444.16', 'ENSG00000083444.16', 'ENSG00000083444.16', 'ENSG00000083444.16'],
-    'transcript_id1': ['OTTHUMG00000002916.3', 'OTTHUMG00000002393.4', 'OTTHUMG00000002393.4', 'OTTHUMG00000002393.4', 'OTTHUMG00000002393.4'],
-    'transcript_id2': ['OTTHUMT00000008139.1', 'OTTHUMT00000006865.1', 'OTTHUMT00000006865.1', 'OTTHUMT00000006865.1', 'OTTHUMT00000006865.1'],
-    'gene_full': ['MRPL20-201', 'PLOD1-201', 'PLOD1-201', 'PLOD1-201', 'PLOD1-201'],
-    'gene': ['MRPL20', 'PLOD1', 'PLOD1', 'PLOD1', 'PLOD1'],
-    'bp': [721, 2940, 2940, 2940, 2940],
-    'biotype': ['protein_coding', 'protein_coding', 'protein_coding', 'protein_coding', 'protein_coding'],
-    'transcript_position': [548, 2538, 2578, 2637, 2703],
-    'n_reads': [25, 23, 21, 24, 24],
-    'probability_modified': [0.988229, 0.947053, 0.996835, 0.961475, 0.987886],
-    'kmer': ['GGACT', 'AGACT', 'AGACT', 'GGACT', 'GGACT'],
-    'mod_ratio': [0.8, 0.695652, 0.857143, 0.791667, 0.916667]
+# Mock data, not yet in dataframe
+data = {
+    'gene': ['SPRR2A', 'SFN', 'SFN', 'SFN', 'COA3', 'VAMP8', 'VAMP8'],
+    'n_reads': [95, 242, 340, 320, 21, 25, 30],
+    'probability_modified': [0.995655, 0.944194, 0.970435, 0.950189, 0.988242, 0.976895, 0.961319],
+    'kmer': ['AGACT', 'GAACT', 'GGACT', 'GGACA', 'TGACT', 'GGACT', 'GGACT'],
+    'mod_ratio': [0.821053, 0.611570, 0.791176, 0.621875, 0.619048, 0.920000, 0.733333]
 }
+
+# Create DataFrame
+hbec_mock_df = pd.DataFrame(data)
+
+
+
 
 
 
@@ -24,32 +22,18 @@ data_mock = {
 
 
 # infected genes of interest (not yet dataframe) 
-data_infected = {
-    'ensembl_id1': ['ENST00000291386.3', 'ENST00000291386.3', 'ENST00000616661.4', 'ENST00000339276.5', 'ENST00000339276.5'],
-    'ensembl_id2': ['ENSG00000160075.11', 'ENSG00000160075.11', 'ENSG00000162496.8', 'ENSG00000175793.11', 'ENSG00000175793.11'],
-    'transcript_id1': ['OTTHUMG00000000576.5', 'OTTHUMG00000000576.5', 'OTTHUMG00000001885.5', 'OTTHUMG00000004093.1', 'OTTHUMG00000004093.1'],
-    'transcript_id2': ['OTTHUMT00000001366.1', 'OTTHUMT00000001366.1', 'OTTHUMT00000005318.3', 'OTTHUMT00000011709.1', 'OTTHUMT00000011709.1'],
-    'gene_full': ['SSU72-201', 'SSU72-201', 'DHRS3-204', 'SFN-201', 'SFN-201'],
-    'gene': ['SSU72', 'SSU72', 'DHRS3', 'SFN', 'SFN'],
-    'bp': [1290, 1290, 1722, 1320, 1320],
-    'biotype': ['protein_coding', 'protein_coding', 'protein_coding', 'protein_coding', 'protein_coding'],
-    'transcript_position': [533, 1221, 1462, 598, 952],
-    'n_reads': [23, 30, 22, 159, 233],
-    'probability_modified': [0.915636, 0.990171, 0.996281, 0.941530, 0.980435],
-    'kmer': ['GAACT', 'GGACT', 'GGACT', 'GAACT', 'GGACT'],
-    'mod_ratio': [0.695652, 0.766667, 0.863636, 0.591195, 0.811159]
+infected_data = {
+    'gene': ['SPRR2A', 'SFN', 'SFN', 'SFN', 'VAMP8', 'VAMP8'],
+    'n_reads': [126, 159, 233, 233, 24, 37],
+    'probability_modified': [0.987176, 0.941530, 0.980435, 0.969402, 0.913177, 0.954685],
+    'kmer': ['AGACT', 'GAACT', 'GGACT', 'GGACA', 'GGACT', 'GGACT'],
+    'mod_ratio': [0.777778, 0.591195, 0.811159, 0.686695, 0.750000, 0.783784]
 }
 
+# Create DataFrame for infected data
+hbec_infected_df = pd.DataFrame(infected_data)
 
 
-
-
-
-# Creating the "hbec_mock_df" DataFrame
-hbec_mock_df = pd.DataFrame(data_mock)
-
-# Creating the "hbec_infected_df" DataFrame
-hbec_infected_df = pd.DataFrame(data_infected)
 
 # Initialize dictionaries to store results
 hbec_mock_values = {}
@@ -65,12 +49,12 @@ for index, row in hbec_mock_df.iterrows():
     result = col_2_value * col_5_value
 
     # Store the result in the dictionary with a unique key
-    key = f"{row['ensembl_id1']}_{index}_mock"  # Use index to create a unique key
+    key = f"{row['gene']}_{index}_mock"  # Use index to create a unique key
     hbec_mock_values[key] = result
 
 # Iterate through rows in the infected DataFrame
 for index, row in hbec_infected_df.iterrows():
-    # Extract values from every second and fifth column
+    # Extract values from every 10th and 13th column
     col_2_value = row['n_reads']
     col_5_value = row['mod_ratio']
 
@@ -78,10 +62,8 @@ for index, row in hbec_infected_df.iterrows():
     result = col_10_value * col_13_value
 
     # Store the result in the dictionary with a unique key
-    key = f"{row['ensembl_id1']}_{index}_infected"  # Use index to create a unique key
+    key = f"{row['gene']}_{index}_infected"  # Use index to create a unique key
     hbec_infected_values[key] = result
 
-print(hbec_mock_values)
-print(hbec_infected_values)
 print(hbec_mock_values)
 print(hbec_infected_values)
