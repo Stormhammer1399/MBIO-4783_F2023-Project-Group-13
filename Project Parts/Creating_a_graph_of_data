@@ -1,0 +1,66 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Your data (modified reads for each gene)
+hbec_mock_values = {'SPRR2A_0_mock': 78.000035, 'SFN_1_mock': 147.99993999999998, 'SFN_2_mock': 268.99984, 'SFN_3_mock': 199.0, 'VAMP8_4_mock': 23.0, 'VAMP8_5_mock': 21.99999}
+hbec_infected_values = {'SPRR2A_0_infected': 98.000028, 'SFN_1_infected': 94.000005, 'SFN_2_infected': 189.000047, 'SFN_3_infected': 159.99993500000002, 'VAMP8_4_infected': 18.0, 'VAMP8_5_infected': 29.000008}
+
+# Percentage differences
+percentage_differences = {'SPRR2A_0_difference': 22.72725663740246, 'SFN_1_difference': 44.62805559728535, 'SFN_2_difference': 34.93441604277078, 'SFN_3_difference': 21.727059644175128, 'VAMP8_4_difference': 24.390243902439025, 'VAMP8_5_difference': 27.451052056904}
+
+# Extract data for plotting
+keys = list(hbec_mock_values.keys())
+index = np.arange(len(keys))
+
+# Ensure that mock and infected pairs are next to each other
+bar_width = 0.35
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Bar graph for mock and infected values
+bar1 = ax.bar(index, list(hbec_mock_values.values()), bar_width, label='Mock')
+bar2 = ax.bar(index + bar_width, [hbec_infected_values.get(key.replace("_mock", "_infected"), 0) for key in keys], bar_width, label='Infected')
+
+# Annotate with percentage differences
+for i, (mock_val, infected_val, diff) in enumerate(zip(list(hbec_mock_values.values()), list(hbec_infected_values.values()), list(percentage_differences.values()))):
+    max_val = max(mock_val, infected_val)
+    ax.annotate(f'{diff:.2f}%', (index[i] + bar_width / 2, max_val + 6), ha='center', va='center', color='red')
+
+
+
+
+
+
+
+# Print keys for debugging
+print("Error keys:", error_keys)
+print("Mock keys:", list(hbec_mock_values.keys()))
+
+# Check for key discrepancies
+for key in error_keys:
+    if key not in hbec_mock_values:
+        print(f"Key '{key}' not found in hbec_mock_values.")
+
+
+
+# Set labels and title
+ax.set_xlabel('Transcripts')
+ax.set_ylabel('Number of modified transcripts')
+ax.set_title('Mock and Infected Transcript Comparison')
+ax.set_xticks(index + bar_width / 2)
+ax.set_xticklabels(keys)
+ax.legend()
+
+# Replace "_mock" with "_transcripts" in the keys for xticklabels
+xticklabels = [key.replace("_mock", "_transcripts") for key in keys]
+
+# Set xticklabels
+ax.set_xticks(index + bar_width / 2)
+ax.set_xticklabels(xticklabels)
+
+# Set xticklabels font size
+ax.tick_params(axis='x', labelsize=8) 
+
+
+
+# Display the graph
+plt.show()
