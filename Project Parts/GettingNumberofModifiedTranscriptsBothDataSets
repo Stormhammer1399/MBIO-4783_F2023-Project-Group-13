@@ -70,7 +70,7 @@ for index, row in hbec_mock_df.iterrows():
 
 # Iterate through rows in the infected DataFrame
 for index, row in hbec_infected_df.iterrows():
-    # Extract values from every 10th and 13th column
+    # Extract values from every second and fifth column
     col_2_value = row['n_reads']
     col_5_value = row['mod_ratio']
 
