@@ -1,5 +1,5 @@
-hbec_mock_values = {'SPRR2A_0_mock': 78.000035, 'SFN_1_mock': 147.99993999999998, 'SFN_2_mock': 268.99984, 'SFN_3_mock': 199.0, 'COA3_4_mock': 13.000008000000001, 'VAMP8_5_mock': 23.0}
-hbec_infected_values = {'SPRR2A_0_infected': 189.000047, 'SFN_1_infected': 189.000047, 'SFN_2_infected': 189.000047, 'SFN_3_infected': 189.000047, 'VAMP8_4_infected': 189.000047, 'VAMP8_5_infected': 189.000047}
+hbec_mock_values = {'SPRR2A_0_mock': 78.000035, 'SFN_1_mock': 147.99993999999998, 'SFN_2_mock': 268.99984, 'SFN_3_mock': 199.0, 'VAMP8_4_mock': 23.0, 'VAMP8_5_mock': 21.99999}
+hbec_infected_values = {'SPRR2A_0_infected': 98.000028, 'SFN_1_infected': 94.000005, 'SFN_2_infected': 189.000047, 'SFN_3_infected': 159.99993500000002, 'VAMP8_4_infected': 18.0, 'VAMP8_5_infected': 29.000008}
 
 # Extract keys from dictionaries
 mock_keys = list(hbec_mock_values.keys())
