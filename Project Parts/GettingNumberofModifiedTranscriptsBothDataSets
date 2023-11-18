@@ -2,11 +2,11 @@ import pandas as pd
 
 # Mock data, not yet in dataframe
 data = {
-    'gene': ['SPRR2A', 'SFN', 'SFN', 'SFN', 'COA3', 'VAMP8', 'VAMP8'],
-    'n_reads': [95, 242, 340, 320, 21, 25, 30],
-    'probability_modified': [0.995655, 0.944194, 0.970435, 0.950189, 0.988242, 0.976895, 0.961319],
-    'kmer': ['AGACT', 'GAACT', 'GGACT', 'GGACA', 'TGACT', 'GGACT', 'GGACT'],
-    'mod_ratio': [0.821053, 0.611570, 0.791176, 0.621875, 0.619048, 0.920000, 0.733333]
+    'gene': ['SPRR2A', 'SFN', 'SFN', 'SFN', 'VAMP8', 'VAMP8'],
+    'n_reads': [95, 242, 340, 320, 25, 30],
+    'probability_modified': [0.995655, 0.944194, 0.970435, 0.950189, 0.976895, 0.961319],
+    'kmer': ['AGACT', 'GAACT', 'GGACT', 'GGACA', 'GGACT', 'GGACT'],
+    'mod_ratio': [0.821053, 0.611570, 0.791176, 0.621875, 0.920000, 0.733333]
 }
 
 # Create DataFrame
@@ -65,5 +65,10 @@ for index, row in hbec_infected_df.iterrows():
     key = f"{row['gene']}_{index}_infected"  # Use index to create a unique key
     hbec_infected_values[key] = result
 
-print(hbec_mock_values)
+print(hbec_mock_values) 
+
+
+
+
+print(hbec_infected_values)
 print(hbec_infected_values)
