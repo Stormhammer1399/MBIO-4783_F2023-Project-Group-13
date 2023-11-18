@@ -1,4 +1,3 @@
-
 import pandas as pd
 
 # mock genes of interest (not yet dataframe)
@@ -59,11 +58,11 @@ hbec_infected_values = {}
 # Iterate through rows in the mock DataFrame
 for index, row in hbec_mock_df.iterrows():
     # Extract values from every 10th and 13th column
-    col_10_value = row['n_reads']
-    col_13_value = row['mod_ratio']
+    col_2_value = row['n_reads']
+    col_5_value = row['mod_ratio']
 
     # Perform the multiplication
-    result = col_10_value * col_13_value
+    result = col_2_value * col_5_value
 
     # Store the result in the dictionary with a unique key
     key = f"{row['ensembl_id1']}_{index}_mock"  # Use index to create a unique key
@@ -82,5 +81,7 @@ for index, row in hbec_infected_df.iterrows():
     key = f"{row['ensembl_id1']}_{index}_infected"  # Use index to create a unique key
     hbec_infected_values[key] = result
 
+print(hbec_mock_values)
+print(hbec_infected_values)
 print(hbec_mock_values)
 print(hbec_infected_values)
