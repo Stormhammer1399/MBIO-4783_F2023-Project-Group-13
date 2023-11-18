@@ -1,5 +1,5 @@
-hbec_mock_values = {'ENST00000344843.11_0_mock': 20.0, 'ENST00000196061.4_1_mock': 15.999996000000001, 'ENST00000196061.4_2_mock': 18.000003, 'ENST00000196061.4_3_mock': 19.000008, 'ENST00000196061.4_4_mock': 22.000008}
-hbec_infected_values = {'ENST00000291386.3_0_infected': 15.999996000000001, 'ENST00000291386.3_1_infected': 23.00001, 'ENST00000616661.4_2_infected': 18.999992, 'ENST00000339276.5_3_infected': 94.000005, 'ENST00000339276.5_4_infected': 189.000047}
+hbec_mock_values = {'SPRR2A_0_mock': 78.000035, 'SFN_1_mock': 147.99993999999998, 'SFN_2_mock': 268.99984, 'SFN_3_mock': 199.0, 'COA3_4_mock': 13.000008000000001, 'VAMP8_5_mock': 23.0, 'VAMP8_6_mock': 21.99999}
+hbec_infected_values = {'SPRR2A_0_infected': 189.000047, 'SFN_1_infected': 189.000047, 'SFN_2_infected': 189.000047, 'SFN_3_infected': 189.000047, 'VAMP8_4_infected': 189.000047, 'VAMP8_5_infected': 189.000047}
 
 # Extract keys from dictionaries
 mock_keys = list(hbec_mock_values.keys())
@@ -13,8 +13,8 @@ for i in range(min(len(mock_keys), len(infected_keys))):
     mock_value = hbec_mock_values[mock_keys[i]]
     infected_value = hbec_infected_values[infected_keys[i]]
 
-    # Calculate percentage difference using the standard formula
-    percentage_diff = ((infected_value - mock_value) / abs(mock_value)) * 100
+    # Calculate percentage difference using the correct formula
+    percentage_diff = abs((infected_value - mock_value) / ((infected_value + mock_value) / 2)) * 100
     percentage_differences[mock_keys[i]] = percentage_diff
 
 # Display the result
