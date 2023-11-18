@@ -71,8 +71,8 @@ for index, row in hbec_mock_df.iterrows():
 # Iterate through rows in the infected DataFrame
 for index, row in hbec_infected_df.iterrows():
     # Extract values from every 10th and 13th column
-    col_10_value = row['n_reads']
-    col_13_value = row['mod_ratio']
+    col_2_value = row['n_reads']
+    col_5_value = row['mod_ratio']
 
     # Perform the multiplication
     result = col_10_value * col_13_value
